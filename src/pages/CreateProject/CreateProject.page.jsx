@@ -27,12 +27,19 @@ function CreateProjectPage() {
         })
     }
 
-    function handleImagesUpload(index, event) {
+    function handleImageDetails(index, event) {
 
         const values = [...projectImages];
         const updatedValue = event.target.name;
         values[index][updatedValue] = event.target.value;
         setProjectImages(values);
+    }
+
+    function handleImageUpload(index, event) {
+        event.preventDefault();
+        console.log('upload image', index)
+        const uploadData = new FormData();
+        uploadData.append('imgURL', e.target.files[0])
     }
 
     function addField(e) {
@@ -77,9 +84,9 @@ function CreateProjectPage() {
                 {
                     projectImages.map((img, index) => (
                         <div key={index}>
-                            <input type="file" id="img" name="img" accept="image/*" />
-                            <input name="imageURL" value={img.imageURL} placeholder='Image URL goes here' onChange={event => handleImagesUpload(index, event)} />
-                            <select id='dimensions' name='dimensions' onChange={event => handleImagesUpload(index, event)}>
+                            <input type="file" id="img" name="imgURL" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
+                            <input name="imageURL" value={img.imageURL} placeholder='Image URL goes here' onChange={event => handleImageDetails(index, event)} />
+                            <select id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
                                 <option value={0}>2x2</option>
                                 <option value={1}>4x4</option>
                                 <option value={2}>8x8</option>
