@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import DataService from '../../data-service/DataService';
 
 function CreateProjectPage() {
 
@@ -12,8 +13,10 @@ function CreateProjectPage() {
     })
 
     const [projectImages, setProjectImages] = useState([
-        { imageURL: '', dimensions: 0 }
+        { imageUrl: '', dimensions: 0 }
     ])
+
+    const dataService = new DataService();
 
     function handleProjectDetails(e) {
 
@@ -35,16 +38,24 @@ function CreateProjectPage() {
         setProjectImages(values);
     }
 
-    function handleImageUpload(index, event) {
+    async function handleImageUpload(index, event) {
         event.preventDefault();
-        console.log('upload image', index)
         const uploadData = new FormData();
-        uploadData.append('imgURL', e.target.files[0])
+        uploadData.append('imageUrl', event.target.files[0])
+        const values = [...projectImages];
+
+        if (event.target.files[0]) {
+            let updatedValue;
+            await dataService.uploadImage(uploadData).then((response) => updatedValue = response.imageUrl)
+            values[index]['imageUrl'] = updatedValue;
+            setProjectImages(values);
+        }
+
     }
 
     function addField(e) {
         e.preventDefault();
-        let newField = { imageURL: '', dimensions: 0 }
+        let newField = { imageUrl: '', dimensions: 0 }
         setProjectImages([...projectImages, newField])
     }
 
@@ -62,8 +73,8 @@ function CreateProjectPage() {
     }
 
     // useEffect(() => {
-    //     console.log(projectDetails)
-    // }, [projectDetails])
+    //     console.log(projectImages)
+    // }, [projectImages])
 
     return (
         <div className='container mx-auto'>
@@ -84,8 +95,8 @@ function CreateProjectPage() {
                 {
                     projectImages.map((img, index) => (
                         <div key={index}>
-                            <input type="file" id="img" name="imgURL" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
-                            <input name="imageURL" value={img.imageURL} placeholder='Image URL goes here' onChange={event => handleImageDetails(index, event)} />
+                            <input type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
+                            <input name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly />
                             <select id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
                                 <option value={0}>2x2</option>
                                 <option value={1}>4x4</option>
