@@ -5,11 +5,15 @@ class DataService {
     constructor() {
 
         let service = axios.create({
-            baseURL: `${process.env.REACT_APP_BASE_URL}`,
-            withCredentials: true
+            baseURL: `${import.meta.env.VITE_BASE_URL}`,
+            // withCredentials: true
         });
 
         this.service = service;
+    }
+
+    uploadImage = (imageUrl) => {
+        return this.service.post("/project/upload-image", imageUrl).then((response) => response.data);
     }
 
 }
