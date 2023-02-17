@@ -11,6 +11,7 @@ import { HomeLayout } from "./pages/Home/HomeLayout";
 import { SouvenirsLayout } from "./pages/Souvenirs/SouvenirsLayout";
 import { WorkLayout } from "./pages/Work/index";
 import { WorkDetailLayout } from "./pages/WorkDetail/WorkDetailLayout";
+import CreateProjectPage from "./pages/CreateProject/CreateProject.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,6 +53,10 @@ function App() {
         {
           path: "contact",
           element: <ContactLayout />,
+        },
+        {
+          path: "create-project",
+          element: <CreateProjectPage />
         },
       ],
     },
