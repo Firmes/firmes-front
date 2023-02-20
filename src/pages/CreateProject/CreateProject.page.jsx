@@ -77,38 +77,64 @@ function CreateProjectPage() {
     // }, [projectImages])
 
     return (
-        <div className='container mx-auto'>
+        <div className="flex mt-5">
             <form>
                 <div>
-                    <input name="project_title" value={projectDetails.project_title} placeholder='Enter title name' onChange={handleProjectDetails} />
-                    <input name="project_client" value={projectDetails.project_client} placeholder='Enter client name' onChange={handleProjectDetails} />
+                    <input className="py-3 pr-52 my-3 mr-2" name="project_title" value={projectDetails.project_title} placeholder='Enter title name' onChange={handleProjectDetails} type="text" />
+                    <input className="py-3 pr-52 my-3 ml-2" name="project_client" value={projectDetails.project_client} placeholder='Enter client name' onChange={handleProjectDetails} type="text" />
+                </div>
+                <div className="flex">
+                    <input className="py-3 pr-52 my-3 mr-2" name="project_description" value={projectDetails.project_description} placeholder='Enter description' onChange={handleProjectDetails} type="text" />
+                    <div className="w-full ml-2">
+                        <input className="py-3 my-3 w-full" name="project_year" value={projectDetails.project_year} placeholder='Enter Year of creation' onChange={handleProjectDetails} type="number" min={0} />
+                    </div>
                 </div>
                 <div>
-                    <input name="project_description" value={projectDetails.project_description} placeholder='Enter description' onChange={handleProjectDetails} />
-                    <input name="project_year" value={projectDetails.project_year} placeholder='Enter Year of creation' onChange={handleProjectDetails} />
+                    <input className="py-3 pr-52 my-3 mr-2" name="project_videoURL" value={projectDetails.project_videoURL} placeholder='Enter video URL' onChange={handleProjectDetails} type="text" />
+                    <input className="py-3 pr-52 my-3 ml-2" name="project_type" value={projectDetails.project_type} placeholder='Enter type of project' onChange={handleProjectDetails} type="text" />
                 </div>
-                <div>
-                    <input name="project_videoURL" value={projectDetails.project_videoURL} placeholder='Enter video URL' onChange={handleProjectDetails} />
-                    <input name="project_type" value={projectDetails.project_type} placeholder='Enter type of project' onChange={handleProjectDetails} />
-                </div>
+
+                <hr />
 
                 {
                     projectImages.map((img, index) => (
                         <div key={index}>
-                            <input type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
-                            <input name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly />
-                            <select id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
-                                <option value={0}>2x2</option>
-                                <option value={1}>4x4</option>
-                                <option value={2}>8x8</option>
-                            </select>
-                            <button onClick={event => removeField(index, event)}>Remove</button>
+                            <div className="flex justify-between">
+                                <input className="py-3 my-3 mr-2" type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
+                                <select className="py-3 pr-52 my-3 mr-2" id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
+                                    <option value={0}>2x2</option>
+                                    <option value={1}>4x4</option>
+                                    <option value={2}>8x8</option>
+                                </select>
+                                <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
+                            </div>
+                            <div>
+                                <input className="py-3 pr-52 my-3 mr-2 w-full" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
+                            </div>
+                            <hr />
                         </div>
                     ))
                 }
 
-                <button onClick={addField}>Add Field</button>
-                <button onClick={handleSubmit}>Submit</button>
+                <div className="flex flex-col items-center">
+                    <div>
+                        <button className="py-3 my-3 mr-2 hover:text-green-500" onClick={addField}>Add Field</button>
+                    </div>
+                    <div>
+
+                        {
+                            projectDetails.project_year < 0 ?
+                                <div className="flex flex-col">
+                                    <span>Negative numbers not allowed.</span>
+                                    <button className="py-3 my-3 mr-2" onClick={handleSubmit} disabled>Submit</button>
+                                </div>
+
+                                :
+
+                                <button className="py-3 my-3 mr-2 hover:text-sky-500" onClick={handleSubmit}>Submit</button>
+                        }
+                    </div>
+                </div>
             </form>
         </div>
 
