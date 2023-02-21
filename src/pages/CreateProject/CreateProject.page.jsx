@@ -85,21 +85,21 @@ function CreateProjectPage() {
     // }, [projectImages])
 
     return (
-        <div className="flex mt-5">
-            <form>
-                <div>
-                    <input className="py-3 pr-52 my-3 mr-2" name="project_title" value={projectDetails.project_title} placeholder='Enter title name' onChange={handleProjectDetails} type="text" />
-                    <input className="py-3 pr-52 my-3 ml-2" name="project_client" value={projectDetails.project_client} placeholder='Enter client name' onChange={handleProjectDetails} type="text" />
+        <div className="flex mt-5 w-3/5">
+            <form className="w-full">
+                <div className="flex">
+                    <input className="py-3 my-3 mr-2 w-1/2" name="project_title" value={projectDetails.project_title} placeholder='Enter title name' onChange={handleProjectDetails} type="text" />
+                    <input className="py-3 my-3 ml-2 w-1/2" name="project_client" value={projectDetails.project_client} placeholder='Enter client name' onChange={handleProjectDetails} type="text" />
                 </div>
                 <div className="flex">
-                    <input className="py-3 pr-52 my-3 mr-2" name="project_description" value={projectDetails.project_description} placeholder='Enter description' onChange={handleProjectDetails} type="text" />
-                    <div className="w-full ml-2">
+                    <input className="py-3 my-3 mr-2 w-1/2" name="project_description" value={projectDetails.project_description} placeholder='Enter description' onChange={handleProjectDetails} type="text" />
+                    <div className="ml-2 w-1/2">
                         <input className="py-3 my-3 w-full" name="project_year" value={projectDetails.project_year} placeholder='Enter Year of creation' onChange={handleProjectDetails} type="number" min={0} />
                     </div>
                 </div>
-                <div>
-                    <input className="py-3 pr-52 my-3 mr-2" name="project_videoURL" value={projectDetails.project_videoURL} placeholder='Enter video URL' onChange={handleProjectDetails} type="text" />
-                    <input className="py-3 pr-52 my-3 ml-2" name="project_type" value={projectDetails.project_type} placeholder='Enter type of project' onChange={handleProjectDetails} type="text" />
+                <div className="flex">
+                    <input className="py-3 my-3 mr-2 w-1/2" name="project_videoURL" value={projectDetails.project_videoURL} placeholder='Enter video URL' onChange={handleProjectDetails} type="text" />
+                    <input className="py-3 my-3 ml-2 w-1/2" name="project_type" value={projectDetails.project_type} placeholder='Enter type of project' onChange={handleProjectDetails} type="text" />
                 </div>
 
                 <hr />
@@ -107,9 +107,9 @@ function CreateProjectPage() {
                 {
                     projectImages.map((img, index) => (
                         <div key={index}>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between items-center">
                                 <input className="py-3 my-3 mr-2" type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
-                                <select className="py-3 pr-52 my-3 mr-2" id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
+                                <select className="py-3 pr-10 my-3 mr-2" id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
                                     <option value={0}>2x2</option>
                                     <option value={1}>4x4</option>
                                     <option value={2}>8x8</option>
