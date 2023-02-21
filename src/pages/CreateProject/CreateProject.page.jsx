@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DataService from '../../data-service/DataService';
 
 function CreateProjectPage() {
@@ -13,9 +14,10 @@ function CreateProjectPage() {
     })
 
     const [projectImages, setProjectImages] = useState([
-        { imageUrl: '', dimensions: 0 }
+        { imageUrl: '', dimensions: 0, image_is_portrait: false }
     ])
 
+    const navigate = useNavigate();
     const dataService = new DataService();
 
     function handleProjectDetails(e) {
@@ -34,7 +36,13 @@ function CreateProjectPage() {
 
         const values = [...projectImages];
         const updatedValue = event.target.name;
-        values[index][updatedValue] = event.target.value;
+
+        if (event.target.type == 'checkbox') {
+            values[index][updatedValue] = event.target.checked;
+        } else {
+            values[index][updatedValue] = event.target.value;
+        }
+
         setProjectImages(values);
     }
 
@@ -55,14 +63,14 @@ function CreateProjectPage() {
 
     function addField(e) {
         e.preventDefault();
-        let newField = { imageUrl: '', dimensions: 0 }
+        let newField = { imageUrl: '', dimensions: 0, image_is_portrait: false }
         setProjectImages([...projectImages, newField])
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(projectDetails)
-        console.log(projectImages)
+        await dataService.createProject(projectDetails, projectImages);
+        navigate('/')
     }
 
     function removeField(index, event) {
@@ -106,6 +114,7 @@ function CreateProjectPage() {
                                     <option value={1}>4x4</option>
                                     <option value={2}>8x8</option>
                                 </select>
+                                <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
                                 <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
                             </div>
                             <div>
