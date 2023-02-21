@@ -38,6 +38,7 @@ function CreateProjectPage() {
         const updatedValue = event.target.name;
 
         if (event.target.type == 'checkbox') {
+            values.forEach((item) => item.image_is_portrait = false);
             values[index][updatedValue] = event.target.checked;
         } else {
             values[index][updatedValue] = event.target.value;
@@ -114,7 +115,7 @@ function CreateProjectPage() {
                                     <option value={1}>4x4</option>
                                     <option value={2}>8x8</option>
                                 </select>
-                                <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
+                                <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
                                 <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
                             </div>
                             <div>
