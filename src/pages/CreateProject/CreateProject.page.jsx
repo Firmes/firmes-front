@@ -38,8 +38,15 @@ function CreateProjectPage() {
         const updatedValue = event.target.name;
 
         if (event.target.type == 'checkbox') {
-            values.forEach((item) => item.image_is_portrait = false);
+            // values.forEach((item) => item.image_is_portrait = false);
+            values.forEach((item, i) => {
+                if (i !== index) {
+                    item.image_is_portrait = false
+                }
+            })
+
             values[index][updatedValue] = event.target.checked;
+            
         } else {
             values[index][updatedValue] = event.target.value;
         }
