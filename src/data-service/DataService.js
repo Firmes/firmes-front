@@ -12,6 +12,10 @@ class DataService {
         this.service = service;
     }
 
+    getAllProjects = () => {
+        return this.service.get("/project/get-all-projects").then((response) => response.data);
+    }
+
     createProject = (projectDetails, projectImages) => {
         return this.service.post("/project/create-new-project", { projectDetails, projectImages }).then((response) => response.data);
     }
