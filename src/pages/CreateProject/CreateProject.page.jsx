@@ -46,7 +46,7 @@ function CreateProjectPage() {
             })
 
             values[index][updatedValue] = event.target.checked;
-            
+
         } else {
             values[index][updatedValue] = event.target.value;
         }
@@ -117,17 +117,26 @@ function CreateProjectPage() {
                         <div key={index}>
                             <div className="flex justify-between items-center">
                                 <input className="py-3 my-3 mr-2" type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
-                                {/* <select className="py-3 pr-10 my-3 mr-2" id='dimensions' name='dimensions' onChange={event => handleImageDetails(index, event)}>
-                                    <option value={0}>2x2</option>
-                                    <option value={1}>4x4</option>
-                                    <option value={2}>8x8</option>
-                                </select> */}
                                 <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
                                 <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
                             </div>
-                            <div>
-                                <input className="py-3 pr-52 my-3 mr-2 w-full" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
-                            </div>
+
+                            {
+                                img.imageUrl ?
+                                    <a href={img.imageUrl} target="_blank" className="cursor-pointer">
+                                        <div>
+                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
+                                        </div>
+                                    </a>
+
+                                    :
+
+                                    <a href={''} target="_self" className="pointer-events-none">
+                                        <div>
+                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
+                                        </div>
+                                    </a>
+                            }
                             <hr />
                         </div>
                     ))
