@@ -8,11 +8,19 @@ function AllProjectsPage() {
 
     useEffect(() => {
         dataService.getAllProjects().then((response) => setProjects(response));
-    }, [])
+    }, [setProjects])
 
     useEffect(() => {
         console.log(projects)
     }, [projects])
+
+    async function handleDelete(id) {
+
+        if (window.confirm(`Are you sure you want to delete Project ${id}?`)) {
+            await dataService.deleteProject(id);
+            await dataService.getAllProjects().then((response) => setProjects(response));
+        }
+    }
 
     return (
         <div className="w-full flex justify-center">
@@ -38,7 +46,7 @@ function AllProjectsPage() {
                                 <td>{p.project_description}</td>
                                 <td className="flex justify-around">
                                     <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onClick={() => handleDelete(p.project_info_id)}>Delete</button>
                                 </td>
                             </tr>
                         ))
