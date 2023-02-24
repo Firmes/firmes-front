@@ -70,7 +70,6 @@ function CreateProjectPage() {
 
     async function handleImageUpload(index, event) {
         event.preventDefault();
-        console.log(event.target.files)
         const uploadData = new FormData();
         uploadData.append('project_image_url', event.target.files[0])
         const values = [...projectImages];
@@ -92,31 +91,31 @@ function CreateProjectPage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (id) {
-            console.log('editar proyecto existente')
-            
-        } else {
 
-            console.log('crear nuevo proyecto')
+        if (id) {
+            await dataService.updateProject(id, projectDetails, projectImages);
+        } else {
+            await dataService.createProject(projectDetails, projectImages);
         }
-        // await dataService.createProject(projectDetails, projectImages);
-        // navigate('/all-projects')
+
+        navigate('/all-projects')
     }
 
-    function removeField(index, event) {
+    async function removeField(index, event, imageId) {
         event.preventDefault();
         let data = [...projectImages];
+        await dataService.deleteImage(imageId);
         data.splice(index, 1);
         setProjectImages(data);
     }
 
-    useEffect(() => {
-        console.log(projectDetails)
-    }, [projectDetails])
+    // useEffect(() => {
+    //     console.log(projectDetails)
+    // }, [projectDetails])
 
-    useEffect(() => {
-        console.log(projectImages)
-    }, [projectImages])
+    // useEffect(() => {
+    //     console.log(projectImages)
+    // }, [projectImages])
 
     return (
         <div className="flex mt-5 w-3/5">
@@ -144,7 +143,7 @@ function CreateProjectPage() {
                             <div className="flex justify-between items-center">
                                 <input className="py-3 my-3 mr-2" type="file" id="img" name="project_image_url" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
                                 <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
-                                <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
+                                <button className="hover:text-red-600" onClick={event => removeField(index, event, img.image_id)}>Remove</button>
                             </div>
 
                             {
