@@ -16,6 +16,10 @@ class DataService {
         return this.service.get("/project/get-all-projects").then((response) => response.data);
     }
 
+    getSingleProject = (id) => {
+        return this.service.get(`/project/get-single-project/${id}`).then((response) => response.data);
+    }
+
     deleteProject = (id) => {
         return this.service.delete(`/project/delete-project/${id}`).then((response) => response.data);
     }
