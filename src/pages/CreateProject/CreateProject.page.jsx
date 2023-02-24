@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DataService from '../../data-service/DataService';
 
 function CreateProjectPage() {
@@ -14,11 +14,25 @@ function CreateProjectPage() {
     })
 
     const [projectImages, setProjectImages] = useState([
-        { imageUrl: '', dimensions: 0, image_is_portrait: false }
+        { project_image_url: '', image_is_portrait: false }
     ])
 
     const navigate = useNavigate();
+    const { id } = useParams();
     const dataService = new DataService();
+
+    useEffect(() => {
+        if (id) {
+            dataService.getSingleProject(id).then((response) => (setProjectDetails({
+                project_title: response.project_title,
+                project_client: response.project_client,
+                project_description: response.project_description,
+                project_year: response.project_creation_year,
+                project_videoURL: response.project_video_url,
+                project_type: response.project_type
+            }), setProjectImages(response.project_images)))
+        }
+    }, [])
 
     function handleProjectDetails(e) {
 
@@ -56,14 +70,15 @@ function CreateProjectPage() {
 
     async function handleImageUpload(index, event) {
         event.preventDefault();
+        console.log(event.target.files)
         const uploadData = new FormData();
-        uploadData.append('imageUrl', event.target.files[0])
+        uploadData.append('project_image_url', event.target.files[0])
         const values = [...projectImages];
 
         if (event.target.files[0]) {
             let updatedValue;
-            await dataService.uploadImage(uploadData).then((response) => updatedValue = response.imageUrl)
-            values[index]['imageUrl'] = updatedValue;
+            await dataService.uploadImage(uploadData).then((response) => updatedValue = response.project_image_url)
+            values[index]['project_image_url'] = updatedValue;
             setProjectImages(values);
         }
 
@@ -71,14 +86,21 @@ function CreateProjectPage() {
 
     function addField(e) {
         e.preventDefault();
-        let newField = { imageUrl: '', dimensions: 0, image_is_portrait: false }
+        let newField = { project_image_url: '', image_is_portrait: false }
         setProjectImages([...projectImages, newField])
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        await dataService.createProject(projectDetails, projectImages);
-        navigate('/')
+        if (id) {
+            console.log('editar proyecto existente')
+            
+        } else {
+
+            console.log('crear nuevo proyecto')
+        }
+        // await dataService.createProject(projectDetails, projectImages);
+        // navigate('/all-projects')
     }
 
     function removeField(index, event) {
@@ -88,9 +110,13 @@ function CreateProjectPage() {
         setProjectImages(data);
     }
 
-    // useEffect(() => {
-    //     console.log(projectImages)
-    // }, [projectImages])
+    useEffect(() => {
+        console.log(projectDetails)
+    }, [projectDetails])
+
+    useEffect(() => {
+        console.log(projectImages)
+    }, [projectImages])
 
     return (
         <div className="flex mt-5 w-3/5">
@@ -116,16 +142,16 @@ function CreateProjectPage() {
                     projectImages.map((img, index) => (
                         <div key={index}>
                             <div className="flex justify-between items-center">
-                                <input className="py-3 my-3 mr-2" type="file" id="img" name="imageUrl" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
+                                <input className="py-3 my-3 mr-2" type="file" id="img" name="project_image_url" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
                                 <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
                                 <button className="hover:text-red-600" onClick={event => removeField(index, event)}>Remove</button>
                             </div>
 
                             {
-                                img.imageUrl ?
-                                    <a href={img.imageUrl} target="_blank" className="cursor-pointer">
+                                img.project_image_url ?
+                                    <a href={img.project_image_url} target="_blank" className="cursor-pointer">
                                         <div>
-                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
+                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="project_image_url" value={img.project_image_url} placeholder='Image URL goes here' readOnly type="text" />
                                         </div>
                                     </a>
 
@@ -133,7 +159,7 @@ function CreateProjectPage() {
 
                                     <a href={''} target="_self" className="pointer-events-none">
                                         <div>
-                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="imageUrl" value={img.imageUrl} placeholder='Image URL goes here' readOnly type="text" />
+                                            <input className="py-3 my-3 mr-2 w-full pointer-events-none" name="project_image_url" value={img.project_image_url} placeholder='Image URL goes here' readOnly type="text" />
                                         </div>
                                     </a>
                             }
