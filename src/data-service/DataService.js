@@ -20,6 +20,10 @@ class DataService {
         return this.service.get(`/project/get-single-project/${id}`).then((response) => response.data);
     }
 
+    updateProject = (id) => {
+        return this.service.put(`/project/edit-project/${id}`, { projectDetails, projectImages }).then((response) => response.data);
+    }
+
     deleteProject = (id) => {
         return this.service.delete(`/project/delete-project/${id}`).then((response) => response.data);
     }
