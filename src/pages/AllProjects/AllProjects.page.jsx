@@ -12,9 +12,9 @@ function AllProjectsPage() {
         dataService.getAllProjects().then((response) => setProjects(response));
     }, [setProjects])
 
-    useEffect(() => {
-        console.log(projects)
-    }, [projects])
+    // useEffect(() => {
+    //     console.log(projects)
+    // }, [projects])
 
     function handleEdit(id) {
         navigate(`/create-project/${id}`)
