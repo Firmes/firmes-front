@@ -20,7 +20,7 @@ class DataService {
         return this.service.get(`/project/get-single-project/${id}`).then((response) => response.data);
     }
 
-    updateProject = (id) => {
+    updateProject = (id, projectDetails, projectImages) => {
         return this.service.put(`/project/edit-project/${id}`, { projectDetails, projectImages }).then((response) => response.data);
     }
 
