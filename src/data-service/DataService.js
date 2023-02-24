@@ -36,6 +36,10 @@ class DataService {
         return this.service.post("/project/upload-image", imageUrl).then((response) => response.data);
     }
 
+    deleteImage = (id) => {
+        return this.service.delete(`/project/delete-image/${id}`).then((response) => response.data);
+    }
+
 }
 
 export default DataService;
