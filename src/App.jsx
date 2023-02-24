@@ -12,6 +12,7 @@ import { SouvenirsLayout } from "./pages/Souvenirs/SouvenirsLayout";
 import { WorkLayout } from "./pages/Work/index";
 import { WorkDetailLayout } from "./pages/WorkDetail/WorkDetailLayout";
 import CreateProjectPage from "./pages/CreateProject/CreateProject.page";
+import AllProjectsPage from "./pages/AllProjects/AllProjects.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -56,6 +57,14 @@ function App() {
         },
         {
           path: "create-project",
+          element: <CreateProjectPage />
+        },
+        {
+          path: "all-projects",
+          element: <AllProjectsPage />
+        },
+        {
+          path: "create-project/:id",
           element: <CreateProjectPage />
         },
       ],
