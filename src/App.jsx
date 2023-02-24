@@ -63,6 +63,10 @@ function App() {
           path: "all-projects",
           element: <AllProjectsPage />
         },
+        {
+          path: "create-project/:id",
+          element: <CreateProjectPage />
+        },
       ],
     },
   ]);
