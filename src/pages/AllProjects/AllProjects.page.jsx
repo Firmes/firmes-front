@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DataService from '../../data-service/DataService';
 
 function AllProjectsPage() {
 
     const [projects, setProjects] = useState([]);
+    const navigate = useNavigate();
     const dataService = new DataService();
 
     useEffect(() => {
@@ -13,6 +15,10 @@ function AllProjectsPage() {
     useEffect(() => {
         console.log(projects)
     }, [projects])
+
+    function handleEdit(id) {
+        navigate(`/create-project/${id}`)
+    }
 
     async function handleDelete(id) {
 
@@ -45,7 +51,7 @@ function AllProjectsPage() {
                                 <td>{p.project_client}</td>
                                 <td>{p.project_description}</td>
                                 <td className="flex justify-around">
-                                    <button>Edit</button>
+                                    <button onClick={() => handleEdit(p.project_info_id)}>Edit</button>
                                     <button onClick={() => handleDelete(p.project_info_id)}>Delete</button>
                                 </td>
                             </tr>
