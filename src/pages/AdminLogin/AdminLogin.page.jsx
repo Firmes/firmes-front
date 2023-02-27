@@ -11,16 +11,21 @@ function AdminLoginPage() {
     const navigate = useNavigate();
     const dataService = new DataService();
 
+    function handleLogin(e) {
+        e.preventDefault();
+        console.log(usernameRef.current.value, passwordRef.current.value)
+    }
+
     return (
         <>
             <div>
                 <form>
                     <div>
-                        <input type="text" placeholder='Enter username' />
-                        <input type="password" placeholder='Enter password' />
+                        <input type="text" placeholder='Enter username' name={usernameRef} ref={usernameRef}/>
+                        <input type="password" placeholder='Enter password' name={passwordRef} ref={passwordRef}/>
                     </div>
                     <div>
-                        <button>Login</button>
+                        <button onClick={handleLogin}>Login</button>
                     </div>
                 </form>
             </div>
