@@ -13,6 +13,7 @@ import { WorkLayout } from "./pages/Work/index";
 import { WorkDetailLayout } from "./pages/WorkDetail/WorkDetailLayout";
 import CreateProjectPage from "./pages/CreateProject/CreateProject.page";
 import AllProjectsPage from "./pages/AllProjects/AllProjects.page";
+import AdminLoginPage from "./pages/AdminLogin/AdminLogin.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +67,10 @@ function App() {
         {
           path: "create-project/:id",
           element: <CreateProjectPage />
+        },
+        {
+          path: "admin-login",
+          element: <AdminLoginPage />
         },
       ],
     },
