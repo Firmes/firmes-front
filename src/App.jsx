@@ -3,6 +3,7 @@ import "./App.css";
 import { ErrorPage } from "./components/Layout/ErrorPage";
 import { FirmesLayout } from "./components/Layout/FirmesLayout";
 import { MouseTracker } from "./components/UI/MouseTracker";
+import { DeviceProvider } from "./context/DeviceContext";
 import { AboutUs } from "./pages/About Us/AboutUs";
 import { ChillLayout } from "./pages/Chill/ChillLayout";
 import { ContactLayout } from "./pages/Contact";
@@ -21,35 +22,20 @@ function App() {
       element: <FirmesLayout />,
       errorElement: <ErrorPage />,
       children: [
-        { path: "/", element: <HomeLayout /> },
         {
-          path: "creators",
-          element: <CreatorsLayout />,
+          path: "", element: <HomeLayout />,
         },
         {
           path: "work",
           element: <WorkLayout />,
         },
         {
-          path: "work/work-detail/:id",
+          path: "work/:id",
           element: <WorkDetailLayout />
         },
         {
           path: "about-us",
           element: <AboutUs />,
-        },
-        {
-          path: "skills",
-          element: <CreatorsLayout />,
-        },
-        {
-          path: "souvenirs",
-          element: <SouvenirsLayout />,
-        },
-        ,
-        {
-          path: "chill",
-          element: <ChillLayout />,
         },
         {
           path: "contact",
@@ -73,8 +59,11 @@ function App() {
 
   return (
     <div>
-      <MouseTracker />
-      <RouterProvider router={router} />
+      <DeviceProvider>
+        <MouseTracker />
+        <RouterProvider router={router} />
+      </DeviceProvider>
+
 
     </div>
   );

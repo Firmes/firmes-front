@@ -158,31 +158,205 @@ video {
   padding: 1em
 }
 
-.stamp {
-  position: absolute;
-  background: orange;
-  border: 4px dotted black;
-}
-
-.stamp1 {
-  left: 30%;
-  top: 10px;
-  width: 20%;
-  height: 100px;
-}
-
-.stamp2 {
-  right: 10%;
-  top: 20px;
-  width: 70%;
-  height: 30px;
-}
 
 .active {
   color: rgb(126 34 206 / var(--tw-text-opacity));
 }
 
+/* ANIMACIONES DE TEXTO */
 
+.tracking-in-contract-bck-bottom {
+  -webkit-animation: tracking-in-contract-bck-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-contract-bck-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+@-webkit-keyframes tracking-in-contract-bck-bottom {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px) translateY(300px);
+            transform: translateZ(400px) translateY(300px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract-bck-bottom {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px) translateY(300px);
+            transform: translateZ(400px) translateY(300px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.text-focus-in {
+  -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+/* ANIMACIONES DE IMAGENES */
+
+.flip-in-ver-right {
+  -webkit-animation: flip-in-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: flip-in-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes flip-in-ver-right {
+  0% {
+    -webkit-transform: rotateY(-80deg);
+    transform: rotateY(-80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-ver-right {
+  0% {
+    -webkit-transform: rotateY(-80deg);
+    transform: rotateY(-80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+
+.flip-in-diag-2-tl {
+  -webkit-animation: flip-in-diag-2-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: flip-in-diag-2-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes flip-in-diag-2-tl {
+  0% {
+    -webkit-transform: rotate3d(-1, 1, 0, 80deg);
+    transform: rotate3d(-1, 1, 0, 80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-diag-2-tl {
+  0% {
+    -webkit-transform: rotate3d(-1, 1, 0, 80deg);
+    transform: rotate3d(-1, 1, 0, 80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+
+.flip-in-diag-2-br {
+  -webkit-animation: flip-in-diag-2-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: flip-in-diag-2-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes flip-in-diag-2-br {
+  0% {
+    -webkit-transform: rotate3d(-1, 1, 0, -80deg);
+    transform: rotate3d(-1, 1, 0, -80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-diag-2-br {
+  0% {
+    -webkit-transform: rotate3d(-1, 1, 0, -80deg);
+    transform: rotate3d(-1, 1, 0, -80deg);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+
+.animation-message-bar {
+  animation: text-overflow 20s infinite;
+}
+
+@keyframes text-overflow {
+  0% {
+    margin-left: 0;
+  }
+
+  50% {
+    margin-left: -300px;
+  }
+
+  100% {
+    margin-left: 0px;
+  }
+}
 
 @layer base {
   @font-face {
