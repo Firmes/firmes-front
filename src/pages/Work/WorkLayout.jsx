@@ -1,4 +1,5 @@
 import React from "react";
+import { ImageHomeWrapper } from "../Home/ImageHomeWrapper";
 import { WorKPicker } from "./index";
 
 

@@ -61,15 +61,15 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="hidden lg:flex flex-col text-white z-10 w-full p-4 bg-firmes-black">
+    <header className="hidden sm:flex flex-col text-white z-10 w-full p-4 bg-firmes-black">
       <nav>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-96 md:mr-36">
+          <div className="w-1/3 mr-36">
             <Link to={"/"}>
-              <img src="/src/assets/logo.png" alt="logo" className="w-full" />
+              <img src="/src/assets/logo.png" alt="logo" className="max-w-xs" />
             </Link>
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-2/3">
             <div className="flex ">
               <div className="w-8 flex justify-center items-center">
                 <img src="/src/assets/Ellipse 1.png" />

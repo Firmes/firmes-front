@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { NavContext } from '../../context/NavContext';
 
 export const HeaderMobile = () => {
 
-    const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
 
+    const {setIsNavOpen, isNavOpen} = useContext(NavContext)
 
     const links = [
         {
@@ -26,7 +27,7 @@ export const HeaderMobile = () => {
     ];
     return (
         <>
-            <header className={`flex lg:hidden bg-firmes-black  justify-between px-4 relative z-40 ${isNavOpen ? "flex-col items-start" : "items-center"} `} >
+            <header className={`flex sm:hidden bg-firmes-black  justify-between px-4 relative z-40 ${isNavOpen ? "flex-col items-start" : "items-center"} `} >
                 <div className="flex items-center justify-between border-b border-gray-400 py-8 w-3/5 border-none">
                     <Link to={"/"}>
                         <img src="/src/assets/logo.png" alt="logo" />
@@ -116,9 +117,9 @@ export const HeaderMobile = () => {
                             </li>
                         );
                     })}
-                    
+                    <hr className='w-full mt-4'/>
                 </ul>
-                <hr className='w-full mt-4'/>
+                
             </div>
             </header>
             
