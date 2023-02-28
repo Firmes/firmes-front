@@ -72,7 +72,7 @@ function AdminLoginPage() {
                     <div className="flex flex-col items-center">
                         {
                             error ?
-                                <span>Username and/or Password is not valid, please try again.</span>
+                                <span>Username and/or Password is not valid, please check and try again.</span>
                                 :
                                 null
                         }
