@@ -40,6 +40,13 @@ class DataService {
         return this.service.delete(`/project/delete-image/${id}`).then((response) => response.data);
     }
 
+    login = (username, password) => {
+        return this.service.post("/auth/login", { username, password }).then((response) => response.data).catch((error) => (error.response.status));
+    }
+
+    signup = (username, password) => {
+        return this.service.post("/auth/signup", { username, password }).then((response) => response.data).catch((error) => (error.response.status));
+    }
 }
 
 export default DataService;
