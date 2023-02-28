@@ -18,13 +18,13 @@ import AdminLoginPage from "./pages/AdminLogin/AdminLogin.page";
 
 export const UserContext = createContext();
 
-const ProtectedAdminRoute = ({ user, redirectPath = '/admin-login' }) => {
+const ProtectedAdminRoute = ({ user, redirectPath = '/admin-login', children }) => {
 
   if (!user) {
     return <Navigate to={redirectPath} replace />;
   }
 
-  return <Outlet />;
+  return children;
 
 };
 
@@ -74,23 +74,15 @@ function App() {
         },
         {
           path: "create-project",
-          element: <ProtectedAdminRoute user={user}>
-            <CreateProjectPage />
-          </ ProtectedAdminRoute>
+          element: <ProtectedAdminRoute user={user}><CreateProjectPage /></ProtectedAdminRoute>
         },
         {
           path: "all-projects",
-          element:
-            <ProtectedAdminRoute user={user}>
-              <AllProjectsPage />
-            </ProtectedAdminRoute>
+          element: <ProtectedAdminRoute user={user}><AllProjectsPage /></ProtectedAdminRoute>
         },
         {
           path: "edit-project/:id",
-          element:
-            <ProtectedAdminRoute user={user}>
-              <CreateProjectPage />
-            </ProtectedAdminRoute>
+          element: <ProtectedAdminRoute user={user}><CreateProjectPage /></ProtectedAdminRoute>
         },
         {
           path: "admin-login",
