@@ -17,7 +17,7 @@ function AllProjectsPage() {
     // }, [projects])
 
     function handleEdit(id) {
-        navigate(`/create-project/${id}`)
+        navigate(`/edit-project/${id}`)
     }
 
     async function handleDelete(id) {

@@ -1,4 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useState, createContext } from "react";
+import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import { ErrorPage } from "./components/Layout/ErrorPage";
 import { FirmesLayout } from "./components/Layout/FirmesLayout";
@@ -14,8 +15,24 @@ import { WorkLayout } from "./pages/Work/index";
 import { WorkDetailLayout } from "./pages/WorkDetail/WorkDetailLayout";
 import CreateProjectPage from "./pages/CreateProject/CreateProject.page";
 import AllProjectsPage from "./pages/AllProjects/AllProjects.page";
+import AdminLoginPage from "./pages/AdminLogin/AdminLogin.page";
+
+export const UserContext = createContext();
+
+const ProtectedAdminRoute = ({ user, redirectPath = '/admin-login', children }) => {
+
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return children;
+
+};
 
 function App() {
+
+  const [user, setUser] = useState();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -43,29 +60,35 @@ function App() {
         },
         {
           path: "create-project",
-          element: <CreateProjectPage />
+          element: <ProtectedAdminRoute user={user}><CreateProjectPage /></ProtectedAdminRoute>
         },
         {
           path: "all-projects",
-          element: <AllProjectsPage />
+          element: <ProtectedAdminRoute user={user}><AllProjectsPage /></ProtectedAdminRoute>
         },
         {
-          path: "create-project/:id",
-          element: <CreateProjectPage />
+          path: "edit-project/:id",
+          element: <ProtectedAdminRoute user={user}><CreateProjectPage /></ProtectedAdminRoute>
         },
+        {
+          path: "admin-login",
+          element: <AdminLoginPage />
+        },
+        {
+          path: "admin-create",
+          element: <AdminLoginPage />
+        }
       ],
     },
   ]);
 
   return (
-    <div>
-      <DeviceProvider>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div>
         <MouseTracker />
         <RouterProvider router={router} />
-      </DeviceProvider>
-
-
-    </div>
+      </div>
+    </UserContext.Provider>
   );
 }
 
