@@ -1,35 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ContactInput from './ContactInput'
+import { ContactTextArea } from './ContactTextArea'
+import { SubmitButton } from './SubmitButton'
+
 
 export const ContactForm = () => {
+
+    const [contactFormValues, setContactFormValues] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+    })
+
+    console.log(contactFormValues);
+    const onSubmit = () => {
+
+    }
+
+
+
     return (
         <>
 
-            <div className='w-2/5'>
-                <form className='p-4 md:w-1/2 bg-firmes-form w-full relative'>
-                    <ContactInput label={"First Name"} required={false}/>
+            <div className='w-full md:w-4/5'>
+                <form className='p-2 md:p-4 mb-4 md:w-1/2 bg-firmes-form w-full relative'>
+                    <ContactInput name={"firstName"} label={"First Name"} required={false} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues} />
 
                 </form>
-                <form className='p-4 md:w-1/2 bg-firmes-form w-full relative bottom-20 left-1/3'>
-                    <ContactInput label={"First Name"} required={false}/>
+                <form className='p-2 md:p-4 mb-4 md:w-1/2 bg-firmes-form w-full relative md:bottom-20 md:left-1/3'>
+                    <ContactInput name={"lastName"} label={"Last Name"} required={false} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues}/>
                 </form>
             </div>
-            <div className='w-4/5 '>
-                <form className='p-4 md:w-1/2 bg-firmes-form w-full relative'>
-                    <ContactInput label={"Email *"} required={true} />
+            <div className='w-full md:w-4/5 '>
+                <form className='p-2 md:p-4 mb-4 md:w-1/2 bg-firmes-form w-full relative'>
+                    <ContactInput name={"email"} label={"Email *"} required={true} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues}/>
 
                 </form>
-                <form className='p-4 md:w-1/2 bg-firmes-form w-full relative bottom-20 left-1/3'>
-                    <ContactInput label={"Subject *"} required={true}/>
+                <form className='p-2 md:p-4 mb-4 md:w-1/2 bg-firmes-form w-full relative md:bottom-20 md:left-1/3'>
+                    <ContactInput name={"subject"} label={"Subject *"} required={true} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues}/>
                 </form>
             </div>
-            <div className='w-4/5 flex justify-center items-center'>
-                <form className='p-4 md:w-1/2 bg-firmes-form flex justify-center items-start flex-col '>
-                    <label className="block text-lg m-2">
-                        Message *
-                    </label>
-                    <textarea rows="5" cols="30" name='message' className='block w-full rounded-md border border-solid border-gray-300 p-4 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'></textarea>
-                </form>
+            <div className='w-full md:w-4/5 flex flex-col md:flex-row justify-center items-center'>
+                <ContactTextArea name={"message"} label={"Subject *"} required={true} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues} />
+                <SubmitButton />
             </div>
         </>
     )
