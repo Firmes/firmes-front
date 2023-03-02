@@ -13,11 +13,6 @@ export const Header = () => {
   });
   const [zodiac, setZodiac] = useState(null);
 
-  const [coords, setCoords] = useState({
-    latitud: null,
-    longitud: null,
-  });
-
   const checkTime = (i) => {
     if (i < 10) {
       i = "0" + i;
@@ -35,30 +30,14 @@ export const Header = () => {
       hour: today.getHours(),
       minutes: checkTime(today.getMinutes()),
     });
-  };
-
-  const success = (pos) => {
-    let crd = pos.coords;
-    setCoords({ latitud: crd.latitude, longitud: crd.longitude });
-  };
-  const error = (err) => {
-    console.warn("ERROR(" + err.code + "): " + err.message);
-  };
-
-  const getCoords = () => {
-    const geo = navigator.geolocation;
-    setCoords(geo.getCurrentPosition(success, error));
+    setZodiac(getZodiac(today.getMonth() + 1, today.getDate()));
   };
 
   useEffect(() => {
     startTime();
     setInterval(startTime(), 5000);
-    getCoords();
   }, []);
 
-  useEffect(() => {
-    setZodiac(getZodiac(date.month, date.day));
-  }, []);
 
   return (
     <header className="hidden sm:flex flex-col text-white z-10 w-full p-4 bg-firmes-black">
@@ -69,7 +48,7 @@ export const Header = () => {
               <img src="/src/assets/logo.png" alt="logo" className="max-w-xs" />
             </Link>
           </div>
-          <div className="flex justify-between w-2/3">
+          <div className="flex justify-between w-2/3 ">
             <div className="flex ">
               <div className="w-8 flex justify-center items-center">
                 <img src="/src/assets/Ellipse 1.png" />
@@ -80,7 +59,7 @@ export const Header = () => {
               <div className="w-8 flex justify-center items-center">
                 <img src="/src/assets/Ellipse 2.png" />
               </div>
-              
+
               <h3 className="text-2xl mx-4 md:text-3xl "> {zodiac?.sign} </h3>
               <div className="w-8 flex justify-center items-center">
                 <img src={zodiac?.img} />
