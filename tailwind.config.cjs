@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         'avant': ['avant'],
       },
+      lineHeight:{
+        '11': "52px"
+      }
     },
   },
   plugins: [],

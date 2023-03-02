@@ -1,15 +1,14 @@
 import React from 'react'
 import { MessageBar } from './MessageBar'
-import { CreatorOfMonth } from './CreatorOfMonth'
-import { ImagesHomeWrapper } from './ImagesHomeWrapper'
+import { ImageHomeWrapper } from './ImageHomeWrapper'
 
 export const HomeLayout = () => {
 
 
+
   return (
-    <div className='w-full py-16'>
-      {/*  <CreatorOfMonth /> */}
-      <ImagesHomeWrapper />
+    <div className='w-full'>
+      <ImageHomeWrapper />
       <MessageBar />
     </div>
   )
