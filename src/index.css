@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 
+
 @font-face {
   font-family: "avant";
   src: url("/assets/Avant Regular.ttf");
@@ -37,6 +38,7 @@ html {
 body {
   min-height: 100vh;
   background-color: #111111;
+  box-sizing: border-box;
 }
 
 /* responsive images/videos */
@@ -355,6 +357,16 @@ video {
 
   100% {
     margin-left: 0px;
+  }
+}
+
+.preview{
+  height: 30vh;
+}
+
+@media (min-width: 767px){
+  .preview{
+    height: 70vh;
   }
 }
 
