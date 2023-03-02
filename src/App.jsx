@@ -2,18 +2,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { ErrorPage } from "./components/Layout/ErrorPage";
 import { FirmesLayout } from "./components/Layout/FirmesLayout";
-import { MouseTracker } from "./components/UI/MouseTracker";
 import { DeviceProvider } from "./context/DeviceContext";
 import { AboutUs } from "./pages/About Us/AboutUs";
-import { ChillLayout } from "./pages/Chill/ChillLayout";
 import { ContactLayout } from "./pages/Contact";
-import { CreatorsLayout } from "./pages/Creators/CreatorsLayout";
 import { HomeLayout } from "./pages/Home/HomeLayout";
-import { SouvenirsLayout } from "./pages/Souvenirs/SouvenirsLayout";
 import { WorkLayout } from "./pages/Work/index";
 import { WorkDetailLayout } from "./pages/WorkDetail/WorkDetailLayout";
 import CreateProjectPage from "./pages/CreateProject/CreateProject.page";
 import AllProjectsPage from "./pages/AllProjects/AllProjects.page";
+import { ProjectProvider } from "./context/ProjectsContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -60,8 +57,9 @@ function App() {
   return (
     <div>
       <DeviceProvider>
-        <MouseTracker />
+        <ProjectProvider>
         <RouterProvider router={router} />
+        </ProjectProvider>
       </DeviceProvider>
 
 
