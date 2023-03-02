@@ -1,9 +1,9 @@
 import React from 'react'
-import { ContactForm } from './ContactForm'
+import { ContactForm } from './index'
 
 export const ContactLayout = () => {
     return (
-        <div className='w-full flex flex-col justify-center items-center'>
+        <div className='w-5/6 flex flex-col justify-center items-center'>
             <ContactForm />
         </div>
     )
