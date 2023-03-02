@@ -29,7 +29,7 @@ function AllProjectsPage() {
     }
 
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center flex-col items-center">
             <table className="w-9/12 table-fixed">
                 <thead>
                     <tr>
@@ -51,14 +51,17 @@ function AllProjectsPage() {
                                 <td>{p.project_client}</td>
                                 <td>{p.project_description}</td>
                                 <td className="flex justify-around">
-                                    <button onClick={() => handleEdit(p.project_info_id)}>Edit</button>
-                                    <button onClick={() => handleDelete(p.project_info_id)}>Delete</button>
+                                    <button className="hover:text-yellow-500" onClick={() => handleEdit(p.project_info_id)}>Edit</button>
+                                    <button className="hover:text-red-500" onClick={() => handleDelete(p.project_info_id)}>Delete</button>
                                 </td>
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
+            <div className="my-14">
+                <button className="hover:text-green-500" onClick={() => navigate('/create-project')}>Create New Project</button>
+            </div>
         </div>
     )
 }
