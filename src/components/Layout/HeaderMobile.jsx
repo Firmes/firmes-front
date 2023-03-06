@@ -107,18 +107,18 @@ export const HeaderMobile = () => {
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </div>
-                <ul className={`MENU-LINK-MOBILE-OPEN flex flex-col items-end justify-between min-h-[250px]  {isNavOpen ? scale-up-ver-top : scale-out-ver-top}`}>
+                <ul className={`MENU-LINK-MOBILE-OPEN flex flex-col items-end justify-between min-h-[180px] w-full {isNavOpen ? scale-up-ver-top : scale-out-ver-top}`}>
                     {links.map((link) => {
                         return (
                             <li
                                 key={link.link}
-                                className="text-white text-5xl transition-all hover:text-purple-700"
+                                className="text-white text-3xl transition-all hover:text-purple-700"
                             >
                                 <Link to={link.to}>{link.link}</Link>
                             </li>
                         );
                     })}
-                    <hr className='w-full mt-4'/>
+                    <hr className='w-full '/>
                 </ul>
                 
             </div>
