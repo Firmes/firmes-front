@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavContext } from '../../context/NavContext';
+import logo from "../../assets/logo.png"
 
 export const HeaderMobile = () => {
 
@@ -30,7 +31,7 @@ export const HeaderMobile = () => {
             <header className={`flex sm:hidden bg-firmes-black  justify-between px-4 relative z-40 ${isNavOpen ? "flex-col items-start" : "items-center"} `} >
                 <div className="flex items-center justify-between border-b border-gray-400 py-8 w-3/5 border-none">
                     <Link to={"/"}>
-                        <img src="/src/assets/logo.png" alt="logo" />
+                        <img src={logo} alt="logo" />
                     </Link>
                 </div>
                 <nav>

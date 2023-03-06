@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getZodiac } from "../../helpers/getZodiac";
 import logo from "../../assets/logo.png"
+import elipLeft from "../../assets/Ellipse 1.png"
+import moon from "../../assets/Subtract.png"
+import elipRight from "../../assets/Ellipse 2.png"
 
 
 export const Header = () => {
@@ -52,13 +55,13 @@ export const Header = () => {
           <div className="flex justify-between w-2/3 ">
             <div className="flex ">
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Ellipse 1.png" />
+                <img src={elipLeft} />
               </div>
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Subtract.png" />
+                <img src={moon} />
               </div>
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Ellipse 2.png" />
+                <img src={elipRight} />
               </div>
 
               <h3 className="text-2xl mx-4 md:text-3xl "> {zodiac?.sign} </h3>

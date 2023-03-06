@@ -1,64 +1,77 @@
+import pisces from "../assets/pisces.png"
+import aries from "../assets/aries.png"
+import taurus from "../assets/taurus.png"
+import gemini from "../assets/gemini.png"
+import cancer from "../assets/cancer.png"
+import leo from "../assets/leo.png"
+import virgo from "../assets/virgo.png"
+import libra from "../assets/libra.png"
+import scorpio from "../assets/scorpio.png"
+import sagitarius from "../assets/sagittarius.png"
+import capricorn from "../assets/capricorn.png"
+import aquarius from "../assets/aquarius.png"
+
 export const getZodiac = (month, day) => {
 
     // determinar el signo zodiacal basado en la fecha actual
     if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
         return {
-            img: "/src/assets/aries.png",
+            img: aries,
             sign: "ARIES"
         };
     } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
         return {
-            img: "/src/assets/taurus.png",
+            img: taurus,
             sign: "TAURUS"
         };
     } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
         return {
-            img: "/src/assets/gemini.png",
+            img: gemini,
             sign: "GEMINI"
         };
     } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
         return {
-            img: "/src/assets/cancer.png",
+            img: cancer,
             sign: "CANCER"
         };
     } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
         return {
-            img: "/src/assets/leo.png",
+            img: leo,
             sign: "LEO"
         };
     } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
         return {
-            img: "/src/assets/virgo.png",
+            img: virgo,
             sign: "VIRGO"
         };
     } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
         return {
-            img: "/src/assets/libra.png",
+            img: libra,
             sign: "LIBRA"
         };
     } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
         return {
-            img: "/src/assets/scorpio.png",
+            img: scorpio,
             sign: "SCORPIO"
         };
     } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
         return {
-            img: "/src/assets/sagittarius.png",
+            img: sagitarius,
             sign: "SAGITTARIUS"
         };
     } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
         return {
-            img: "/src/assets/capricorn.png",
+            img: capricorn,
             sign: "CAPRICORN"
         };
     } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
         return {
-            img: "/src/assets/aquarius.png",
+            img: aquarius,
             sign: "AQUARIUS"
         };
     } else {
         return {
-            img: "/src/assets/pisces.png",
+            img: pisces,
             sign: "PISCES"
         };
     }
