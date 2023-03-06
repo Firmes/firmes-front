@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ProjectContext } from '../../context/ProjectsContext'
+import arrow from "../../assets/arrow.svg"
 
 export const NextProjectButton = ({ actualId }) => {
 
@@ -19,7 +20,7 @@ export const NextProjectButton = ({ actualId }) => {
     return (
         <button className='text-white text-xl flex items-center gap-4 m-4 self-end hover:text-firmes-violet order-5 md:order-4' onClick={handlePick}  >
             NEXT PROJECT
-            <img src='/src/assets/arrow.svg' />
+            <img src={arrow} alt={"Arrow"} />
         </button>
     )
 }
