@@ -18,6 +18,9 @@ module.exports = {
       },
       lineHeight:{
         '11': "52px"
+      },
+      height: {
+        '70vh': '70vh',
       }
     },
   },
