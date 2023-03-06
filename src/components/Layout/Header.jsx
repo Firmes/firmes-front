@@ -45,7 +45,7 @@ export const Header = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="w-1/3 mr-36">
             <Link to={"/"}>
-              <img src="/src/assets/logo.png" alt="logo" className="max-w-xs" />
+              <img src="src/assets/logo.png" alt="logo" className="max-w-xs" />
             </Link>
           </div>
           <div className="flex justify-between w-2/3 ">
