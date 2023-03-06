@@ -57,6 +57,10 @@ function App() {
           element: <ContactLayout />,
         },
         {
+          path: "*",
+          element: <HomeLayout />,
+        },
+        {
           path: "create-project",
           element: <ProtectedAdminRoute user={user}><CreateProjectPage /></ProtectedAdminRoute>
         },
