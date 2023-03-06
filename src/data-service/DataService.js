@@ -47,6 +47,11 @@ class DataService {
     signup = (username, password) => {
         return this.service.post("/auth/signup", { username, password }).then((response) => response.data).catch((error) => (error.response.status));
     }
+
+    saveContact = ({ firstName, lastName, email, subject, message }) => {
+
+        return this.service.post("/contact/save-contact-details", { user_firstname: firstName, user_lastname: lastName, user_email: email, message_subject: subject, message_text: message }).then((response) => response.data)
+    }
 }
 
 export default DataService;

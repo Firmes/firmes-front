@@ -44,7 +44,7 @@ export const SideBar = () => {
   };
 
   return (
-    <nav className="hidden lg:flex justify-end m-10 z-20 absolute right-0 bottom-32 w-1/6">
+    <nav className="hidden lg:flex justify-end m-10 z-50 absolute right-0 bottom-32 w-1/6">
       <ul className="text-white text-4xl text-right">
         {links.map((link) => {
           return (

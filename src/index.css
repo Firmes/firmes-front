@@ -360,14 +360,18 @@ video {
   }
 }
 
-.preview{
-  height: 30vh;
+.bg-modal{
+  background-image: url("/src/assets/bg-whats.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 @media (min-width: 767px){
   .preview{
     height: 70vh;
   }
+  
 }
 
 @layer base {
