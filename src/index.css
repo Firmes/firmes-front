@@ -39,6 +39,7 @@ body {
   min-height: 100vh;
   background-color: #111111;
   box-sizing: border-box;
+  color: white;
 }
 
 /* responsive images/videos */
