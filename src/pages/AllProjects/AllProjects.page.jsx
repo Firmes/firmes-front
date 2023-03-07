@@ -49,10 +49,12 @@ function AllProjectsPage() {
                                 <td>{p.project_title}</td>
                                 <td>{p.project_type}</td>
                                 <td>{p.project_client}</td>
-                                <td>{p.project_description}</td>
-                                <td className="flex justify-around">
-                                    <button className="hover:text-yellow-500" onClick={() => handleEdit(p.project_info_id)}>Edit</button>
-                                    <button className="hover:text-red-500" onClick={() => handleDelete(p.project_info_id)}>Delete</button>
+                                <td className="truncate">{p.project_description}</td>
+                                <td>
+                                    <div className="flex justify-evenly">
+                                        <button className="hover:text-yellow-500" onClick={() => handleEdit(p.project_info_id)}>Edit</button>
+                                        <button className="hover:text-red-500" onClick={() => handleDelete(p.project_info_id)}>Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                         ))

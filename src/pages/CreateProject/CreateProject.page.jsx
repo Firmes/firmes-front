@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import DataService from '../../data-service/DataService';
 
@@ -12,6 +12,8 @@ function CreateProjectPage() {
         project_videoURL: '',
         project_type: ''
     })
+
+    const textAreaRef = useRef(null);
 
     const [projectImages, setProjectImages] = useState([
         { project_image_url: '', image_is_portrait: false }
@@ -33,6 +35,12 @@ function CreateProjectPage() {
             }), setProjectImages(response.project_images)))
         }
     }, [])
+
+    useEffect(() => {
+        textAreaRef.current.style.height = "0px";
+        const scrollHeight = textAreaRef.current.scrollHeight;
+        textAreaRef.current.style.height = scrollHeight + "px";
+    }, [projectDetails.project_description]);
 
     function handleProjectDetails(e) {
 
@@ -125,7 +133,7 @@ function CreateProjectPage() {
                     <input className="py-3 my-3 ml-2 w-1/2" name="project_client" value={projectDetails.project_client} placeholder='Enter client name' onChange={handleProjectDetails} type="text" />
                 </div>
                 <div className="flex">
-                    <input className="py-3 my-3 mr-2 w-1/2" name="project_description" value={projectDetails.project_description} placeholder='Enter description' onChange={handleProjectDetails} type="text" />
+                    <textarea className="py-3 my-3 mr-2 w-1/2" name="project_description" value={projectDetails.project_description} ref={textAreaRef} placeholder='Enter description' onChange={handleProjectDetails} type="text" rows={5}/>
                     <div className="ml-2 w-1/2">
                         <input className="py-3 my-3 w-full" name="project_year" value={projectDetails.project_year} placeholder='Enter Year of creation' onChange={handleProjectDetails} type="number" min={0} />
                     </div>
