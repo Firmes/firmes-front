@@ -17,6 +17,7 @@ export const WorkDetailLayout = () => {
             .then((data) => {
                 setProject(data)
             })
+        window.scrollTo(0, 0)
     }, [id])
 
 

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { DeviceContext } from '../../context/DeviceContext';
 import { SingleImage } from './SingleImage';
 import { ImageModal } from './ImageModal';
+import { formatYoutubeUrl } from '../../helpers/formatYoutubeUrl';
 
 
 export const WorkGallery = ({ project }) => {
@@ -41,7 +42,7 @@ export const WorkGallery = ({ project }) => {
                 {project?.project_video_url.startsWith("https")
                   &&
                   <div>
-                    <iframe src={project?.project_video_url}>
+                    <iframe  src={formatYoutubeUrl(project?.project_video_url)}>
                       <p>Your browser does not support iframes.</p>
                     </iframe>
                   </div>
@@ -64,7 +65,7 @@ export const WorkGallery = ({ project }) => {
                 {project?.project_video_url.startsWith("https")
                   &&
                   <div>
-                    <iframe src={project?.project_video_url}>
+                    <iframe frameborder="0" height={"288px"} src={formatYoutubeUrl(project?.project_video_url)}>
                       <p>Your browser does not support iframes.</p>
                     </iframe>
                   </div>
