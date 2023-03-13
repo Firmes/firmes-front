@@ -19,10 +19,14 @@ export const FirmesLayout = () => {
           :
           <Header />
         }
-        <main className="w-screen max-w-full flex justify-center items-center">
+        
+        <main className="w-full max-w-full flex justify-center items-center">
           <Outlet />
-          <SideBar />
+          
         </main>
+        
+        
+        
       </NavProvider>
 
     </div>
