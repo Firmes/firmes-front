@@ -150,7 +150,7 @@ function CreateProjectPage() {
                         <div key={index}>
                             <div className="flex justify-between items-center">
                                 <input className="py-3 my-3 mr-2" type="file" id="img" name="project_image_url" accept="image/*" onChange={(event) => handleImageUpload(index, event)} />
-                                <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is portrait?</label>
+                                <label><input type="checkbox" id="image_is_portrait" value={img.image_is_portrait} checked={img.image_is_portrait} name="image_is_portrait" onChange={event => handleImageDetails(index, event)} /> Is cover?</label>
                                 <button className="hover:text-red-600" onClick={event => removeField(index, event, img.image_id)}>Remove</button>
                             </div>
 

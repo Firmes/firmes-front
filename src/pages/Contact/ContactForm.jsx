@@ -22,7 +22,7 @@ export const ContactForm = () => {
     return (
         <>
 
-            <div className='w-full md:w-4/5'>
+            <div className='w-full md:w-4/5 md:my-14'>
                 <form className='p-2 md:p-4 mb-4 md:w-1/2 bg-firmes-form w-full relative'>
                     <ContactInput name={"firstName"} label={"First Name"} required={false} setContactFormValues={setContactFormValues} contactFormValues={contactFormValues} />
                 </form>

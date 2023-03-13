@@ -79,14 +79,14 @@ function AdminLoginPage() {
                         {
                             isNewAccount ?
                                 <>
-                                    <button className="py-3 my-5 hover:text-sky-500" onClick={handleLogin}>Submit</button>
+                                    <button className="py-3 my-5 hover:text-firmes-violet" onClick={handleLogin}>Submit</button>
                                 </>
 
                                 :
 
                                 <>
-                                    <button className="py-3 my-5 hover:text-sky-500" onClick={handleLogin}>Submit</button>
-                                    <button className="py-1 my-1 hover:text-sky-500" onClick={handleCreateAccount}>Create Account</button>
+                                    <button className="py-3 my-5 hover:text-firmes-violet" onClick={handleLogin}>Submit</button>
+                                    <button className="py-1 my-1 hover:text-firmes-violet" onClick={handleCreateAccount}>Create Account</button>
                                 </>
                         }
                     </div>
