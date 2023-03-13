@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer } from '../../components/Layout/index'
+import { Footer, SideBar } from '../../components/Layout/index'
 import firmesDesk from "../../assets/mobile-Group 22.png"
 import firmesMob from "../../assets/image 21.png"
 import selina from "../../assets/Selina_logo_black 2.png"
@@ -21,19 +21,23 @@ import saeta from "../../assets/saeta-logo 1 (1).png"
 export const AboutUs = () => {
     return (
         <section className='text-white md:p-8 w-full flex flex-col justify-center items-center md:items-start'>
-            <div className='flex flex-col md:flex-row md:w-3/4'>
-                <div className='p-4 md:hidden'>
-                    <img src={firmesDesk} alt='about-us' />
+            <div>
+                <div className='flex flex-col md:flex-row justify-center items-center w-full lg:w-5/6'>
+                    <div className='p-4 md:hidden'>
+                        <img src={firmesDesk} alt='about-us' />
+                    </div>
+                    <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2'>
+                        <img src={firmesMob} alt='about-us' />
+                    </div>
+                    <div className='p-2  md:order-1 md:w-2/3'>
+                        <h2 className=' text-xl md:text-4xl md:text-end md:leading-11 hover:scale-105 transition-all ease-in-out duration-1000'>
+                            Firmes is a worldwide studio, specializing in <span className='text-firmes-violet'>content production</span>. Our goal is to guide brands and personal brands through the constantly shifting digital world using a <span className='text-firmes-violet'>content-first marketing approach</span>. We provide human-centric solutions that foster brand authenticity and <span className='text-firmes-violet'>create true value to communities</span>
+                        </h2>
+                    </div>
                 </div>
-                <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2'>
-                    <img src={firmesMob} alt='about-us' />
-                </div>
-                <div className='p-2  md:order-1 md:w-2/3'>
-                    <h2 className=' text-xl md:text-4xl md:text-end md:leading-11'>
-                        Firmes is a worldwide studio, specializing in <span className='text-firmes-violet'>content production</span>. Our goal is to guide brands and personal brands through the constantly shifting digital world using a <span className='text-firmes-violet'>content-first marketing approach</span>. We provide human-centric solutions that foster brand authenticity and <span className='text-firmes-violet'>create true value to communities</span>
-                    </h2>
-                </div>
+                <SideBar />
             </div>
+
 
             <h3 className='text-center text-xl md:text-4xl w-full my-8 md:my-14 tracking-in-contract-bck-bottom'>
                 /some of our clients/

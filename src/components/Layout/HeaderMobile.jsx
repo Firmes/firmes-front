@@ -114,7 +114,7 @@ export const HeaderMobile = () => {
                                 key={link.link}
                                 className="text-white text-3xl transition-all hover:text-purple-700"
                             >
-                                <Link to={link.to}>{link.link}</Link>
+                                <Link to={link.to} onClick={()=> setIsNavOpen(false)}>{link.link}</Link>
                             </li>
                         );
                     })}

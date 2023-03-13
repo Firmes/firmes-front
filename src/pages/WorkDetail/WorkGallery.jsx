@@ -23,31 +23,20 @@ export const WorkGallery = ({ project }) => {
   };
 
 
-
   return (
     <>
-      <div className='md:flex w-full order-4 md:order-3'>
-        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between 3 md:w-2/6">
-          <div className="w-full my-4 ">
-            <p className="text-sm md:text-xl text-white leading-6">
+      <div className='md:flex w-full justify-evenly items-center order-4 md:order-3'>
+        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between  md:w-4/12 mr-8">
+          <div className="w-full">
+            <p className="text-sm md:text-2xl text-white leading-6">
               {project.project_description}
             </p>
           </div>
-
         </div>
-        <div className="md:w-4/6 ">
+        <div className="md:w-7/12 ">
           {
             isMobile ?
               <div className='flex flex-col justify-center items-center gap-4'>
-                {project?.project_video_url.startsWith("https")
-                  &&
-                  <div>
-                    <iframe  src={formatYoutubeUrl(project?.project_video_url)}>
-                      <p>Your browser does not support iframes.</p>
-                    </iframe>
-                  </div>
-                }
-
                 {
                   project.project_images.map((image) => {
                     return (
@@ -62,30 +51,18 @@ export const WorkGallery = ({ project }) => {
               </div>
               :
               <Slider {...settings}>
-                {project?.project_video_url.startsWith("https")
-                  &&
-                  <div>
-                    <iframe frameborder="0" height={"288px"} src={formatYoutubeUrl(project?.project_video_url)}>
-                      <p>Your browser does not support iframes.</p>
-                    </iframe>
-                  </div>
-                }
-
                 {project?.project_images.map((image) => {
                   return (
                     <SingleImage key={image.image_id} setModalImage={setModalImage} setShowModal={setShowModal} image={image} />
-
                   )
                 })}
               </Slider>
           }
         </div>
       </div>
-
       {showModal ? (
         <ImageModal ModalImage={ModalImage} setShowModal={setShowModal} />
       ) : null}
-
     </>
 
 

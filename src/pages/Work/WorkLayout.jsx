@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
+import { Footer } from "../../components/Layout";
 import { DeviceContext } from "../../context/DeviceContext";
 import { ProjectContext } from "../../context/ProjectsContext";
 import { ImagesDesktopContainer } from "../Home/ImagesDesktopContainer";
 import { ImagesMobileContainer } from "../Home/ImagesMobileContainer";
-import { WorKPicker } from "./index";
 
 
 export const WorkLayout = () => {
@@ -12,7 +12,7 @@ export const WorkLayout = () => {
   const { data } = useContext(ProjectContext)
 
   return (
-    <div className="w-full py-16">
+    <div className="w-full py-16 flex flex-col justify-center items-center">
       <>
         {isMobile
           ?
@@ -21,7 +21,7 @@ export const WorkLayout = () => {
           <ImagesDesktopContainer data={data} />
         }
       </>
-      {/* <WorKPicker /> */}
+      <Footer />
     </div>
   );
 };
