@@ -14,7 +14,7 @@ export const ImageHomeWrapper = () => {
 
     if (loading) {
         return (
-            <div className='w-screen h-screen'>
+            <div className='w-screen h-screen flex flex-col justify-center items-center'>
                 <Loader />
                 <Footer />
             </div>

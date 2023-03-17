@@ -26,7 +26,7 @@ export const WorkGallery = ({ project }) => {
   return (
     <>
       <div className='md:flex w-full justify-evenly items-center order-4 md:order-3'>
-        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between  md:w-4/12 mr-8">
+        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between  md:w-4/12 m-1  md:mr-8">
           <div className="w-full">
             <p className="text-sm md:text-2xl text-white leading-6">
               {project.project_description}

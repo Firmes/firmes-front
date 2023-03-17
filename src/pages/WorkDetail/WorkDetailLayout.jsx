@@ -22,7 +22,7 @@ export const WorkDetailLayout = () => {
 
 
     return (
-        <section className="max-w-full w-full p-2 md:top-1/4 sm:pl-8 bg-firmes-black flex flex-col items-center ">
+        <section className="max-w-full w-full p-4 md:top-1/4 sm:pl-8 bg-firmes-black flex flex-col items-center ">
             {project &&
                 <>
                     <WorkPreview project={project} imagePreviewActive={imagePreviewActive} />
