@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { data } from "../../helpers/data";
-import { WorkInfo, WorkPreview, WorkFooter, NextProjectButton, WorkGallery } from "./index";
+import { useParams } from "react-router-dom";
+import { Footer } from "../../components/Layout/index";
+import DataService from "../../data-service/DataService";
+import { WorkInfo, WorkPreview, NextProjectButton, WorkGallery } from "./index";
 
 export const WorkDetailLayout = () => {
 
-    const [imagePreviewActive, setImagePreviewActive] = useState(0)
+    const [imagePreviewActive, setImagePreviewActive] = useState("")
+    const [project, setProject] = useState("")
 
-    
-    
+    const { id } = useParams()
+    const dataService = new DataService
 
-    console.log(data);
+    useEffect(() => {
+        dataService.getSingleProject(id)
+            .then((data) => {
+                setProject(data)
+            })
+        window.scrollTo(0, 0)
+    }, [id])
+
+
     return (
-        <section className="max-w-full md:top-1/4 md:py-8 md:px-4 bg-firmes-black flex flex-col items-center">
-            <WorkPreview image={data[0]?.images[imagePreviewActive]} video={data[0]?.video} />
-            <WorkInfo title={data[0]?.title} description={data[0]?.description} year={data[0]?.year} client={data[0]?.client} type={data[0]?.type} setImagePreviewActive={setImagePreviewActive} />
-            <WorkGallery images={data[0]?.images} setImagePreviewActive={setImagePreviewActive} description={data[0]?.description} />
-            <NextProjectButton imagePreviewActive={imagePreviewActive} setImagePreviewActive={setImagePreviewActive} data={data} />
-            <WorkFooter />
+        <section className="max-w-full w-full p-4 md:top-1/4 sm:pl-8 bg-firmes-black flex flex-col items-center ">
+            {project &&
+                <>
+                    <WorkPreview project={project} imagePreviewActive={imagePreviewActive} />
+                    <WorkInfo project={project} />
+                    <WorkGallery project={project} setImagePreviewActive={setImagePreviewActive} />
+                    <NextProjectButton actualId={id} />
+                    <Footer />
+                </>
+            }
         </section>
     );
 };

@@ -2,36 +2,21 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const links = [
-  /* {
-    to: "creators",
-    link: "CREATORS",
-  }, */
   {
-    to: "",
+    to: "/",
     link: "HOME",
   },
   {
-    to: "work",
+    to: "/work",
     link: "WORK",
   },
   {
-    to: "about-us",
+    to: "/about-us",
     link: "ABOUT US"
   },
-  /* {
-    to: "skills",
-    link: "SKILLS",
-  },
+  
   {
-    to: "souvenirs",
-    link: "SOUVENIRS",
-  },
-  {
-    to: "chill",
-    link: "CHILL",
-  }, */
-  {
-    to: "contact",
+    to: "/contact",
     link: "CONTACT",
   },
 ];
@@ -44,8 +29,8 @@ export const SideBar = () => {
   };
 
   return (
-    <nav className="hidden lg:flex justify-end m-10 z-20 absolute right-0 bottom-20 w-1/6">
-      <ul className="text-white text-4xl text-right">
+    <nav className="hidden lg:flex items-end justify-end m-4 w-1/6 bg-transparent ">
+      <ul className="text-white text-4xl text-right absolute right-10 bottom-1/4">
         {links.map((link) => {
           return (
             <li

@@ -1,11 +1,18 @@
 import React from 'react'
+import { SideBar } from '../../components/Layout'
+import { formatYoutubeUrl } from '../../helpers/formatYoutubeUrl'
 
-export const WorkPreview = ({image, video}) => {
+export const WorkPreview = ({ project }) => {
+
   return (
 
-    <div className="w-full order-2 md:order-1">
-      <img className='w-full' src={image} alt={image} />
-      {/* <iframe width="100%" height="800px" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
+    <div className="w-full min-w-full preview order-2 md:order-1 overflow-hidden sm:px-6 xl:px-14">
+
+      <iframe className='w-full h-full aspect-video' src={formatYoutubeUrl(project?.project_video_url)}>
+        <p>Your browser does not support iframes.</p>
+      </iframe>
+
+    <SideBar />
     </div>
   )
 }

@@ -13,7 +13,15 @@ module.exports = {
       },
       fontFamily: {
         'avant': ['avant'],
+        'average-sans': ['Average Sans, sans-serif']
+
       },
+      lineHeight:{
+        '11': "52px"
+      },
+      height: {
+        '70vh': '70vh',
+      }
     },
   },
   plugins: [],

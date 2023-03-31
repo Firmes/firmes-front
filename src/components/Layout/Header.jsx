@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getZodiac } from "../../helpers/getZodiac";
+import logo from "../../assets/logo.png"
+import elipLeft from "../../assets/Ellipse 1.png"
+import moon from "../../assets/Subtract.png"
+import elipRight from "../../assets/Ellipse 2.png"
 
 
 export const Header = () => {
@@ -12,11 +16,6 @@ export const Header = () => {
     minutes: null,
   });
   const [zodiac, setZodiac] = useState(null);
-
-  const [coords, setCoords] = useState({
-    latitud: null,
-    longitud: null,
-  });
 
   const checkTime = (i) => {
     if (i < 10) {
@@ -35,67 +34,50 @@ export const Header = () => {
       hour: today.getHours(),
       minutes: checkTime(today.getMinutes()),
     });
-  };
-
-  const success = (pos) => {
-    let crd = pos.coords;
-    setCoords({ latitud: crd.latitude, longitud: crd.longitude });
-  };
-  const error = (err) => {
-    console.warn("ERROR(" + err.code + "): " + err.message);
-  };
-
-  const getCoords = () => {
-    const geo = navigator.geolocation;
-    setCoords(geo.getCurrentPosition(success, error));
+    setZodiac(getZodiac(today.getMonth() + 1, today.getDate()));
   };
 
   useEffect(() => {
     startTime();
     setInterval(startTime(), 5000);
-    getCoords();
   }, []);
 
-  useEffect(() => {
-    setZodiac(getZodiac(date.month, date.day));
-  }, []);
 
   return (
-    <header className="hidden lg:flex flex-col text-white z-10 w-full p-4 bg-firmes-black">
+    <header className="hidden sm:flex flex-col text-white z-10 w-full p-4 bg-firmes-black">
       <nav>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-96 md:mr-36">
+          <div className="w-1/5 xl:mr-36">
             <Link to={"/"}>
-              <img src="/src/assets/logo.png" alt="logo" className="w-full" />
+              <img src={logo} alt="logo" className="max-w-xs w-full" />
             </Link>
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-4/5 ">
             <div className="flex ">
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Ellipse 1.png" />
+                <img src={elipLeft} />
               </div>
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Subtract.png" />
+                <img src={moon} />
               </div>
               <div className="w-8 flex justify-center items-center">
-                <img src="/src/assets/Ellipse 2.png" />
+                <img src={elipRight} />
               </div>
-              
-              <h3 className="text-2xl mx-4 md:text-3xl "> {zodiac?.sign} </h3>
+
+              <h3 className="text-2xl mx-4 xl:text-3xl "> {zodiac?.sign} </h3>
               <div className="w-8 flex justify-center items-center">
                 <img src={zodiac?.img} />
               </div>
             </div>
-            <h3 className="text-2xl md:text-3xl">
-              {/* {coords?.latitud}/{coords?.longitud} */}
+            <h3 className="hidden md:block text-xl xl:text-3xl">
               N4°37'56.656''/W74°4'33.145''
             </h3>
             <div className="flex gap-4">
-              <h2 className="text-2xl md:text-3xl">
+              <h2 className="text-xl xl:text-3xl">
                 {" "}
                 {date.day}/{date.month + 1}/{date.year}{" "}
               </h2>
-              <h2 className="text-2xl md:text-3xl">
+              <h2 className="text-xl xl:text-3xl">
                 {date.hour}:{date.minutes}
               </h2>
 

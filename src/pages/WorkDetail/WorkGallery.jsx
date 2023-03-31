@@ -1,36 +1,70 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { DeviceContext } from '../../context/DeviceContext';
+import { SingleImage } from './SingleImage';
+import { ImageModal } from './ImageModal';
+import { formatYoutubeUrl } from '../../helpers/formatYoutubeUrl';
 
-export const WorkGallery = ({ images, setImagePreviewActive, description }) => {
+
+export const WorkGallery = ({ project }) => {
+
+  const { isMobile } = useContext(DeviceContext)
+  const [showModal, setShowModal] = useState(false);
+  const [ModalImage, setModalImage] = useState("")
+
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
+
+
   return (
-    <div className='md:flex order-4 md:order-3'>
-      <div className="flex flex-col items-center justify-center md:flex-row md:justify-between 3 md:w-2/6">
-        <div className="w-full my-4 ">
-          <p className="text-xs md:text-xl text-white leading-6">
-            {description}
-          </p>
+    <>
+      <div className='md:flex w-full justify-evenly items-center order-4 md:order-3'>
+        <div className="flex flex-col items-center justify-center md:flex-row md:justify-between  md:w-4/12 m-1  md:mr-8">
+          <div className="w-full">
+            <p className="text-sm md:text-2xl text-white leading-6">
+              {project.project_description}
+            </p>
+          </div>
         </div>
-
-      </div>
-      <div className="columns-1 lg:columns-3 w-full md:w-4/6 gap-4 ">
-        {/* {images.map((image) => {
-            return (
-              <div className="mx-2" key={image}>
-                <img src={image} alt={image} />
+        <div className="md:w-7/12 ">
+          {
+            isMobile ?
+              <div className='flex flex-col justify-center items-center gap-4'>
+                {
+                  project.project_images.map((image) => {
+                    return (
+                      <div key={image.image_id}>
+                        <img className='w-80 h-72 object-cover' src={image.project_image_url
+                        } alt={image.project_image_url
+                        } />
+                      </div>
+                    )
+                  })
+                }
               </div>
-            )
-          })} */}
-
-        <div className="mx-2 max-w-full h-72 mb-4 cursor-pointer" onClick={() => setImagePreviewActive(3)} >
-          <img src={images[3]} alt={images[3]} className="h-full object-cover" />
-        </div>
-        <div className="mx-2 max-w-full h-72 mb-4 cursor-pointer" onClick={() => setImagePreviewActive(1)} >
-          <img src={images[1]} alt={images[1]} className="h-full object-cover" />
-        </div>
-        <div className="mx-2 max-w-full h-72 mb-4 cursor-pointer" onClick={() => setImagePreviewActive(2)} >
-          <img src={images[2]} alt={images[2]} className="h-full object-cover" />
+              :
+              <Slider {...settings}>
+                {project?.project_images.map((image) => {
+                  return (
+                    <SingleImage key={image.image_id} setModalImage={setModalImage} setShowModal={setShowModal} image={image} />
+                  )
+                })}
+              </Slider>
+          }
         </div>
       </div>
-    </div>
+      {showModal ? (
+        <ImageModal ModalImage={ModalImage} setShowModal={setShowModal} />
+      ) : null}
+    </>
+
 
   )
 }
