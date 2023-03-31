@@ -8,7 +8,7 @@ export const SubmitButton = ({ contactFormValues, setError, setSuccess }) => {
     const onSubmit = () => {
         dataService.saveContact(contactFormValues)
             .then((res) => {
-                setSuccess(res.message)
+                setSuccess(`Mensaje enviado!`)
                 setError("")
             })
             .catch((err) => {
