@@ -49,7 +49,7 @@ class DataService {
     }
 
     saveContact = ({ firstName, lastName, email, subject, message }) => {
-        return this.service.post("/contact/save-contact-hubspot", { firstName: firstName, lastname: lastName, email: email, mensajeweb : message }).then((response) => response.data)
+        return this.service.post("/contact/save-contact-hubspot", { firstName: firstName, lastname: lastName, email: email, message_web : message }).then((response) => response.data)
     }
 }
 
