@@ -1,7 +1,9 @@
 import React from 'react'
 import { Footer, SideBar } from '../../components/Layout/index'
-import firmesDesk from "../../assets/mobile-Group 22.png"
-import firmesMob from "../../assets/image 21.png"
+/* import firmesDesk from "../../assets/mobile-Group 22.png"
+import firmesMob from "../../assets/image 21.png" */
+import firmes from "../../assets/FOTT1139 WEB.jpg" 
+
 import selina from "../../assets/Selina_logo_black 2.png"
 import redbull from "../../assets/Red-Bull-logo 2.png"
 import hm from "../../assets/HM_logo_logotype_emblem 2.png"
@@ -24,12 +26,12 @@ export const AboutUs = () => {
             <div>
                 <div className='flex flex-col md:flex-row justify-center items-center w-full lg:w-5/6'>
                     <div className='p-4 md:hidden'>
-                        <img src={firmesDesk} alt='about-us' />
+                        <img src={firmes} alt='about-us' />
                     </div>
-                    <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2'>
-                        <img src={firmesMob} alt='about-us' />
+                    <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2 md:w-2/5'>
+                        <img src={firmes} alt='about-us' />
                     </div>
-                    <div className='p-2  md:order-1 md:w-2/3'>
+                    <div className='p-2  md:order-1 md:w-3/5'>
                         <h2 className=' text-xl md:text-4xl md:text-end md:leading-11 hover:scale-105 transition-all ease-in-out duration-1000'>
                             Firmes is a worldwide studio, specializing in <span className='text-firmes-violet'>content production</span>. Our goal is to guide brands and personal brands through the constantly shifting digital world using a <span className='text-firmes-violet'>content-first marketing approach</span>. We provide human-centric solutions that foster brand authenticity and <span className='text-firmes-violet'>create true value to communities</span>
                         </h2>
