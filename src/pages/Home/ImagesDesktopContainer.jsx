@@ -11,9 +11,9 @@ export const ImagesDesktopContainer = ({ data }) => {
         <>
             <div className='w-5/6 hidden sm:grid md:grid-cols-2  overflow-hidden p-4 gap-4'>
 
-                {data.length > 0 &&
-                    data.map((project) => {
-                        if (data.indexOf(project) === 1 && location.pathname !== "/work") {
+                {data?.length > 0 &&
+                    data?.map((project) => {
+                        if (data?.indexOf(project) === 1 && location.pathname !== "/work") {
                             return (
                                 <>
                                     <div key={project?.project_title} className={` text-white z-30 h-fit w-2/3 md:text-black md:bg-slate-300 p-4 duration-1000 cursor-pointer hover:scale-105 transition-all`} >
