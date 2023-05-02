@@ -1,4 +1,9 @@
 [[redirects]]
-    from = "/*"
-    to = "index.html"
-    status = 200
+  from = "/project/*"
+  to = "https://unique-horse-266f02.netlify.app/:splat"
+  headers = { Access-Control-Allow-Origin = "https://firmes.netlify.app" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
