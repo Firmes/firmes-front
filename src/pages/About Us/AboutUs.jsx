@@ -28,10 +28,10 @@ export const AboutUs = () => {
                     <div className='p-4 md:hidden'>
                         <img src={firmes} alt='about-us' />
                     </div>
-                    <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2 md:w-2/5'>
+                    <div className='hidden md:flex justify-center items-center md:mx-8 md:order-2 md:w-2/6'>
                         <img src={firmes} alt='about-us' />
                     </div>
-                    <div className='p-2  md:order-1 md:w-3/5'>
+                    <div className='p-2  md:order-1 md:w-4/6'>
                         <h2 className=' text-xl md:text-4xl md:text-end md:leading-11 hover:scale-105 transition-all ease-in-out duration-1000'>
                             Firmes is a worldwide studio, specializing in <span className='text-firmes-violet'>content production</span>. Our goal is to guide brands and personal brands through the constantly shifting digital world using a <span className='text-firmes-violet'>content-first marketing approach</span>. We provide human-centric solutions that foster brand authenticity and <span className='text-firmes-violet'>create true value to communities</span>
                         </h2>

@@ -10,7 +10,7 @@ export const Footer = () => {
                     <img src={logo} alt="logo" className="w-full" />
                 </Link>
             </div>
-            <p className='text-white text-sm md:text-2xl'>wearefirmes@gmail.com</p>
+            <p className='text-white text-sm md:text-2xl'>info@wearefirmes.com</p>
         </footer>
     )
 }

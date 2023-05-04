@@ -47,7 +47,7 @@ function AllProjectsPage() {
                             <tr key={index} className="text-center">
                                 <td>{p.project_info_id}</td>
                                 <td>{p.project_title}</td>
-                                <td>{p.project_type}</td>
+                                <td>{p.projectType.toUpperCase()}</td>
                                 <td>{p.project_client}</td>
                                 <td className="truncate">{p.project_description}</td>
                                 <td>

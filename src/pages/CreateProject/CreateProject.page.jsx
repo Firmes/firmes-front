@@ -31,7 +31,7 @@ function CreateProjectPage() {
                 project_description: response.project_description,
                 project_year: response.project_creation_year,
                 project_videoURL: response.project_video_url,
-                project_type: response.project_type
+                project_type: response.projectType
             }), setProjectImages(response.project_images)))
         }
     }, [])

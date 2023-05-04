@@ -28,7 +28,7 @@ export const MobileImageBox = ({ src, alt, title, id }) => {
     return (
         <div className={` w-full relative my-2 text-center cursor-pointer duration-1000 transition-all ${translateClasses[randomTranslate]} ${isNavOpen && isNavTranslates[randomNavTranslates]}  hover:scale-105 hover:z-40 `} onClick={handlePick} >
             <img src={src} alt={alt} className='w-full object-cover' />
-            <div className='text-white font-average-sans text-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>{title} </div>
+            <div className='text-white strokeee font-average-sans text-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>{title} </div>
         </div>
     )
 }

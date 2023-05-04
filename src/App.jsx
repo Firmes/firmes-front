@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import { ErrorPage } from "./components/Layout/ErrorPage";
@@ -16,6 +16,8 @@ import AdminLoginPage from "./pages/AdminLogin/AdminLogin.page";
 
 export const UserContext = createContext();
 
+
+
 const ProtectedAdminRoute = ({ user, redirectPath = '/admin-login', children }) => {
 
   if (!user) {
@@ -30,6 +32,17 @@ const ProtectedAdminRoute = ({ user, redirectPath = '/admin-login', children }) 
 function App() {
 
   const [user, setUser] = useState();
+
+  useEffect(() => {
+    document.querySelectorAll('.js-marquee').forEach(function (e) {
+      var letter = e.querySelector('p');
+      for (let counter = 1; counter <= 0.5; ++counter) {
+        var clone = letter.cloneNode(true);
+        letter.after(clone);
+      }
+    })
+  }, [])
+
 
   const router = createBrowserRouter([
     {
@@ -86,13 +99,13 @@ function App() {
 
   return (
 
-<UserContext.Provider value={{ user, setUser }}>    
+    <UserContext.Provider value={{ user, setUser }}>
       <DeviceProvider>
         <ProjectProvider>
           <RouterProvider router={router} />
         </ProjectProvider>
       </DeviceProvider>
- </UserContext.Provider>
+    </UserContext.Provider>
 
   );
 }

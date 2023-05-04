@@ -6,5 +6,5 @@ export const formatYoutubeUrl = (url) => {
     if (url.includes('shorts/')) {
         return url.replace('shorts/', 'embed/').trim()
     }
-
+    return url
 }

@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
+:root{
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
+}
 
 @font-face {
   font-family: "avant";
   src: url("/assets/Avant Regular.ttf");
 }
+
 
 
 *,
@@ -445,6 +450,39 @@ video {
 }
 
 /* FIN SPINNER */
+
+.strokeee{
+  -webkit-text-stroke: 1px black;
+}
+
+
+.marquee {
+  transition: all 0.5s;
+}
+
+.marquee.running .marquee-inner {
+  animation-play-state: running;
+}
+
+
+.marquee-inner {
+  width: fit-content;
+  display: flex;
+  position: relative;
+  transform: translate3d(var(--move-initial), 0, 0);
+  animation: marquee 10s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(var(--move-initial));
+  }
+
+  100% {
+    transform: translateX(var(--move-final));
+  }
+}
 
 .animation-message-bar {
   animation: text-overflow 20s infinite;
