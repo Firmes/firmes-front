@@ -15,7 +15,7 @@ export const WorkInfo = ({ project }) => {
         <p>CLIENT: {project.project_client} </p>
         <p>YEARS: {project.project_creation_year} </p>
         <p>TITLE: {project.project_title} </p>
-        <p>TYPE: {project.projectType.toUpperCase()} </p>
+        <p>TYPE: {project?.projectType?.toUpperCase()} </p>
         {/* <p>COUNTRY: COLOMBIA</p>
         <p>FORMAT: 16:9</p> */}
 
