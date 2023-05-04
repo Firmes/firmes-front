@@ -39,7 +39,7 @@ export const ImageBox = ({ src, alt, title, id, client }) => {
         <div className={` w-${randomWidthNumber}/6 relative my-2 text-center cursor-pointer duration-500 transition-all ${justifySelfGrid[randomJustifySelf]} ${alignSelfGrid[randomAlignSelf]} ${translateClasses[randomTranslate]}  ${isNavOpen && isNavTranslates[randomNavTranslates]}  hover:scale-105 hover:z-40`} onClick={handlePick} >
             <img src={src} alt={alt} className='w-full object-cover' />
             <div className='absolute w-full h-full top-0 left-0 opacity-80 hover:bg-firmes-black transition-all duration-1000'></div>
-            <div className='text-white font-average-sans text-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>  {client}</div>
+            <div className='text-white font-avant text-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>  {client}</div>
         </div>
     )
 }

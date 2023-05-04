@@ -9,7 +9,7 @@ export const ImagesDesktopContainer = ({ data }) => {
 
     return (
         <>
-            <div className='w-5/6 hidden sm:grid md:grid-cols-2  overflow-hidden p-4 gap-4'>
+            <div className='w-5/6 hidden sm:grid md:grid-cols-2 p-4 gap-4'>
 
                 {data?.length > 0 &&
                     data?.map((project) => {
