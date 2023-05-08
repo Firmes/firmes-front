@@ -8,7 +8,7 @@ export const ImageBox = ({ src, alt, title, id, client }) => {
 
     const translateClasses = ['translate-y-40 translate-x-40', 'translate-y-4 -translate-x-4', 'translate-x-4', 'translate-x-4 -translate-y-4']
     const justifySelfGrid = ['justify-self-start', 'justify-self-end', 'justify-self-center', 'justify-self-stretch']
-    const alignSelfGrid = ['self-start', 'self-end', 'self-center', 'self-stretch', 'self-baseline']
+    const alignSelfGrid = ['self-start', 'self-end', 'self-center', 'self-baseline']
     const animations = ['flip-in-diag-2-br', 'flip-in-diag-2-tl', 'flip-in-ver-right']
     const isNavTranslates = ["-translate-y-44", "-translate-y-80", "translate-y-32 translate-x-0", "-translate-y-36 translate-x-20"]
 
